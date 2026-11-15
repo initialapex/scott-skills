@@ -14,16 +14,12 @@ Planned: design skills (object-oriented design, MVVM, Material Design, UI/UX des
 
 ## Install
 
-This repository is private, so your git must be able to clone it
-(`gh auth login` or SSH key). Run inside a Claude Code session:
+Run inside a Claude Code session:
 
 ```
 /plugin marketplace add initialapex/scott-skills
 /plugin install ss-workflow@scott-skills
 ```
-
-Background auto-update of a private marketplace needs a `GITHUB_TOKEN`
-(or `GH_TOKEN`) environment variable with read access to this repository.
 
 ## Layout
 

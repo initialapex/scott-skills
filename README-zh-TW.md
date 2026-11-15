@@ -14,14 +14,12 @@ Scott Chang 的 Claude Code plugin marketplace。
 
 ## 安裝
 
-這個 repository 是私有的，你的 git 必須能 clone 它（`gh auth login` 或 SSH key）。在 Claude Code session 裡執行：
+在 Claude Code session 裡執行：
 
 ```
 /plugin marketplace add initialapex/scott-skills
 /plugin install ss-workflow@scott-skills
 ```
-
-私有 marketplace 的背景自動更新需要設定 `GITHUB_TOKEN`（或 `GH_TOKEN`）環境變數，且對這個 repository 有讀取權限。
 
 ## 結構
 
