@@ -1,0 +1,20 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "scott-skills",
+  "description": "Scott Chang's Claude Code plugins: the ss-workflow request workflow and design skills",
+  "owner": {
+    "name": "Scott Chang"
+  },
+  "plugins": [
+    {
+      "name": "ss-workflow",
+      "description": "Request-driven gitflow workflow skills for a workspace that wraps projects as git submodules: init, new/check request, review, merge, and release",
+      "category": "development",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/initialapex/ss-workflow.git"
+      },
+      "homepage": "https://github.com/initialapex/ss-workflow"
+    }
+  ]
+}
