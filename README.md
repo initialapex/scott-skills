@@ -10,7 +10,13 @@ Scott Chang's Claude Code plugin marketplace.
 |--------|--------|-------------|
 | `ss-workflow` | [initialapex/ss-workflow](https://github.com/initialapex/ss-workflow) (separate repository) | Request-driven gitflow workflow: init, new/check request, review, merge, release |
 
-Planned: design skills (object-oriented design, MVVM, Material Design, UI/UX design).
+Planned (every plugin of this marketplace is prefixed `ss-` so that its skill namespace
+`<plugin>:<skill>` does not collide with plugins from other marketplaces):
+
+| Plugin | Skills | Scope |
+|--------|--------|-------|
+| `ss-design` | `ood`, `ui-ux` | Technology-independent design principles and review checklists |
+| `ss-wpf` | `mvvm`, `material-design` | WPF: CommunityToolkit.Mvvm and MaterialDesignInXaml |
 
 ## Install
 
