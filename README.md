@@ -9,6 +9,7 @@ Scott Chang's Claude Code plugin marketplace.
 | Plugin | Source | Description |
 |--------|--------|-------------|
 | `ss-workflow` | [initialapex/ss-workflow](https://github.com/initialapex/ss-workflow) (separate repository) | Request-driven gitflow workflow: init, new/check request, review, merge, release |
+| `ss-wpf` | [plugins/ss-wpf](plugins/ss-wpf) | WPF desktop applications. `ss-wpf:mvvm`: MVVM with CommunityToolkit.Mvvm on .NET 8+ and .NET Framework 4.7.2/4.8, or a hand-written base for Visual Studio 2012 |
 
 Planned (every plugin of this marketplace is prefixed `ss-` so that its skill namespace
 `<plugin>:<skill>` does not collide with plugins from other marketplaces):
@@ -16,7 +17,7 @@ Planned (every plugin of this marketplace is prefixed `ss-` so that its skill na
 | Plugin | Skills | Scope |
 |--------|--------|-------|
 | `ss-design` | `ood`, `ui-ux` | Technology-independent design principles and review checklists |
-| `ss-wpf` | `mvvm`, `material-design` | WPF: CommunityToolkit.Mvvm and MaterialDesignInXaml |
+| `ss-wpf` | `material-design` (added to the existing plugin) | WPF: MaterialDesignInXaml |
 
 ## Install
 
@@ -25,6 +26,7 @@ Run inside a Claude Code session:
 ```
 /plugin marketplace add initialapex/scott-skills
 /plugin install ss-workflow@scott-skills
+/plugin install ss-wpf@scott-skills
 ```
 
 ## Layout
