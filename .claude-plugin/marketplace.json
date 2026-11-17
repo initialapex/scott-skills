@@ -24,7 +24,7 @@
     },
     {
       "name": "ss-design",
-      "description": "Technology-independent design skills: object-oriented design (responsibilities, SOLID, patterns, domain model, refactoring) with review checklists",
+      "description": "Technology-independent design skills: object-oriented design (responsibilities, SOLID, patterns, domain model, refactoring) and UI/UX design (easy to use or easy to learn, flows, layout, forms, accessibility), with review checklists",
       "category": "development",
       "source": "./plugins/ss-design"
     }

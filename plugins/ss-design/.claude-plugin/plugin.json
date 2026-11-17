@@ -2,10 +2,10 @@
   "name": "ss-design",
   "displayName": "SS Design",
   "version": "0.1.0",
-  "description": "Technology-independent design skills: object-oriented design (responsibilities, SOLID, patterns, domain model, refactoring) with review checklists",
+  "description": "Technology-independent design skills: object-oriented design (responsibilities, SOLID, patterns, domain model, refactoring) and UI/UX design (easy to use or easy to learn, flows, layout, forms, accessibility), with review checklists",
   "author": {
     "name": "Scott Chang"
   },
   "license": "MIT",
-  "keywords": ["design", "ood", "solid", "design-patterns", "refactoring", "ddd"]
+  "keywords": ["design", "ood", "solid", "design-patterns", "refactoring", "ddd", "ui", "ux", "usability", "accessibility"]
 }
