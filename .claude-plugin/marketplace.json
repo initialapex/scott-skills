@@ -21,6 +21,12 @@
       "description": "WPF desktop application skills: MVVM with CommunityToolkit.Mvvm (or a hand-written base for old toolchains), and Material Design with MaterialDesignThemes",
       "category": "development",
       "source": "./plugins/ss-wpf"
+    },
+    {
+      "name": "ss-design",
+      "description": "Technology-independent design skills: object-oriented design (responsibilities, SOLID, patterns, domain model, refactoring) with review checklists",
+      "category": "development",
+      "source": "./plugins/ss-design"
     }
   ]
 }
