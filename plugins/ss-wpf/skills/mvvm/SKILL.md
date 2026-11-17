@@ -1,6 +1,6 @@
 ---
 name: mvvm
-description: Design, write, refactor, and review WPF desktop code with the MVVM pattern - ViewModels, commands, bindings, DI, navigation, messaging, validation, dialogs, and ViewModel unit tests - using CommunityToolkit.Mvvm on modern .NET and .NET Framework 4.7.2/4.8, or a hand-written minimal base on old toolchains such as Visual Studio 2012. Use this whenever the work touches a WPF / XAML desktop project (a .csproj with UseWPF, or .xaml windows and user controls), even if the user does not say "MVVM": adding a window, page, dialog, or feature; moving logic out of code-behind; wiring services; making a ViewModel testable; or reviewing WPF code. Not for web front ends, WinUI, MAUI, or Avalonia, and not for visual styling or themes.
+description: 'Design, write, refactor, and review WPF desktop code with the MVVM pattern - ViewModels, commands, bindings, DI, navigation, messaging, validation, dialogs, and ViewModel unit tests - using CommunityToolkit.Mvvm on modern .NET and .NET Framework 4.7.2/4.8, or a hand-written minimal base on old toolchains such as Visual Studio 2012. Use this whenever the work touches a WPF / XAML desktop project (a .csproj with UseWPF, or .xaml windows and user controls), even if the user does not say "MVVM": adding a window, page, dialog, or feature; moving logic out of code-behind; wiring services; making a ViewModel testable; or reviewing WPF code. Not for web front ends, WinUI, MAUI, or Avalonia, and not for visual styling or themes.'
 ---
 
 # WPF MVVM
