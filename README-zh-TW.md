@@ -9,19 +9,21 @@ Scott Chang 的 Claude Code plugin marketplace。
 | Plugin | 來源 | 說明 |
 |--------|------|------|
 | `ss-workflow` | [initialapex/ss-workflow](https://github.com/initialapex/ss-workflow)（獨立 repository） | 以 request 驅動的 gitflow 工作流：init、new/check request、review、merge、release |
+| `ss-wpf` | [plugins/ss-wpf](plugins/ss-wpf) | WPF 桌面應用程式。`ss-wpf:mvvm`：MVVM，.NET 8 以上和 .NET Framework 4.7.2/4.8 用 CommunityToolkit.Mvvm，Visual Studio 2012 用手寫的基底類別。`ss-wpf:material-design`：MaterialDesignThemes（MaterialDesignInXaml）5.x 的主題、樣式、對話框與 shell，適用 .NET 8 以上和 .NET Framework 4.7.2/4.8 |
+| `ss-design` | [plugins/ss-design](plugins/ss-design) | 與技術無關的設計。`ss-design:ood`：物件導向設計（責任分配、SOLID、設計模式、領域模型、code smell 與重構、錯誤處理），附 Mermaid 圖與 review checklist；範例為 C# 7.3。`ss-design:ui-ux`：UI/UX 設計，先決定 Easy to use 或 Easy to learn（資訊架構與流程、版面、表單／表格與回饋、鍵盤與無障礙、多語系、現場操作畫面），附 Mermaid 流程圖、ASCII 線框圖與 review checklist |
 
-規劃中：設計類 skills（物件導向設計、MVVM、Material Design、UI/UX 設計）。
+這個 marketplace 的 plugin 一律加上 `ss-` 前綴，讓 skill 的完整名稱 `<plugin>:<skill>` 不會跟其他 marketplace 的 plugin 重複。
 
 ## 安裝
 
-這個 repository 是私有的，你的 git 必須能 clone 它（`gh auth login` 或 SSH key）。在 Claude Code session 裡執行：
+在 Claude Code session 裡執行：
 
 ```
 /plugin marketplace add initialapex/scott-skills
 /plugin install ss-workflow@scott-skills
+/plugin install ss-wpf@scott-skills
+/plugin install ss-design@scott-skills
 ```
-
-私有 marketplace 的背景自動更新需要設定 `GITHUB_TOKEN`（或 `GH_TOKEN`）環境變數，且對這個 repository 有讀取權限。
 
 ## 結構
 
@@ -34,6 +36,9 @@ plugins/<plugin>/                 放在這個 repository 裡的 plugin
 
 ## 版本
 
+- 整個 collection 的版號放在 `.claude-plugin/marketplace.json` 的 `metadata.version`；
+  repository 每次發佈都會更新它，並打 `vX.Y.Z` 格式的 tag。
 - 每個 plugin 在自己的 `.claude-plugin/plugin.json` 管理 `version`。
-- 這個 repository 裡的 plugin 打 `<plugin>/vX.Y.Z` 格式的 tag。
+- 這個 repository 裡的 plugin 在發佈時若版號有變，打 `<plugin>/vX.Y.Z` 格式的 tag。
+- 發佈走 `release/vX.Y.Z` 分支，以 collection 版號命名。
 - `main` 只放已發佈的版本，日常開發在 `develop`。
