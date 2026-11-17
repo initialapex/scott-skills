@@ -1,0 +1,4 @@
+# Keep repository tooling out of release archives (git archive)
+tools/ export-ignore
+.gitignore export-ignore
+.gitattributes export-ignore
