@@ -26,6 +26,10 @@
 - Defaults: easy to use remembers the last value per user; easy to learn uses the safe
   value that most people need. Never default a choice with serious consequences.
 - Units are part of the label or shown after the field ("Weight [____] kg").
+- Recognition rather than recall: users pick from what they see (lists, recent values,
+  names next to codes) instead of remembering codes or copying values from another
+  screen; the context they need for the decision (the selected order, the customer)
+  stays visible while they work.
 
 ### Validation and errors
 

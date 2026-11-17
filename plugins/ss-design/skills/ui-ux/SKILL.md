@@ -50,7 +50,9 @@ record exceptions: [references/direction.md](references/direction.md).
 ## Core rules
 
 1. **The direction decides the trade-offs.** State it at the top of every design and
-   review; when two rules conflict, the direction wins.
+   review; when two rules conflict, the direction wins. It never overrides
+   accessibility (rules 8 and 9, the *must* items of UX-K) or protection against data
+   loss and unsafe actions; the direction only changes how they are met.
 2. **Design for tasks, not for tables.** Screens follow what users do and in which
    order, not the shape of the database or the class model.
 3. **Every screen has all its states.** Empty, loading, normal, partly loaded, error,
@@ -81,6 +83,7 @@ record exceptions: [references/direction.md](references/direction.md).
 | Field operation: touch screens, viewing distance, status at a glance, protection against mis-touch, alarms | [references/field-operation.md](references/field-operation.md) |
 | Design output: flow, ASCII wireframes, component and state table, UI text, open points | [references/design-output.md](references/design-output.md) |
 | Review checklist | [references/review-checklist.md](references/review-checklist.md) |
+| Sources: Nielsen's heuristics, ISO 9241-110, WCAG, Windows guidelines, and the laws behind the rules, mapped to the checklist ids | [references/sources.md](references/sources.md) |
 
 ## Boundaries
 
