@@ -15,6 +15,12 @@
         "url": "https://github.com/initialapex/ss-workflow.git"
       },
       "homepage": "https://github.com/initialapex/ss-workflow"
+    },
+    {
+      "name": "ss-wpf",
+      "description": "WPF desktop application skills: MVVM with CommunityToolkit.Mvvm, or a hand-written base for old toolchains",
+      "category": "development",
+      "source": "./plugins/ss-wpf"
     }
   ]
 }
