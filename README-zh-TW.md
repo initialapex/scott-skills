@@ -9,14 +9,13 @@ Scott Chang 的 Claude Code plugin marketplace。
 | Plugin | 來源 | 說明 |
 |--------|------|------|
 | `ss-workflow` | [initialapex/ss-workflow](https://github.com/initialapex/ss-workflow)（獨立 repository） | 以 request 驅動的 gitflow 工作流：init、new/check request、review、merge、release |
-| `ss-wpf` | [plugins/ss-wpf](plugins/ss-wpf) | WPF 桌面應用程式。`ss-wpf:mvvm`：MVVM，.NET 8 以上和 .NET Framework 4.7.2/4.8 用 CommunityToolkit.Mvvm，Visual Studio 2012 用手寫的基底類別 |
+| `ss-wpf` | [plugins/ss-wpf](plugins/ss-wpf) | WPF 桌面應用程式。`ss-wpf:mvvm`：MVVM，.NET 8 以上和 .NET Framework 4.7.2/4.8 用 CommunityToolkit.Mvvm，Visual Studio 2012 用手寫的基底類別。`ss-wpf:material-design`：MaterialDesignThemes（MaterialDesignInXaml）5.x 的主題、樣式、對話框與 shell，適用 .NET 8 以上和 .NET Framework 4.7.2/4.8 |
 
 規劃中（這個 marketplace 的 plugin 一律加上 `ss-` 前綴，讓 skill 的完整名稱 `<plugin>:<skill>` 不會跟其他 marketplace 的 plugin 重複）：
 
 | Plugin | Skills | 範圍 |
 |--------|--------|------|
 | `ss-design` | `ood`、`ui-ux` | 與技術無關的設計原則與 review checklist |
-| `ss-wpf` | `material-design`（加進既有的 plugin） | WPF：MaterialDesignInXaml |
 
 ## 安裝
 

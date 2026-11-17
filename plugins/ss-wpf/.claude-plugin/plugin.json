@@ -2,10 +2,10 @@
   "name": "ss-wpf",
   "displayName": "SS WPF",
   "version": "0.1.0",
-  "description": "WPF desktop application skills: MVVM with CommunityToolkit.Mvvm, or a hand-written base for old toolchains",
+  "description": "WPF desktop application skills: MVVM with CommunityToolkit.Mvvm (or a hand-written base for old toolchains), and Material Design with MaterialDesignThemes",
   "author": {
     "name": "Scott Chang"
   },
   "license": "MIT",
-  "keywords": ["wpf", "xaml", "mvvm", "communitytoolkit", "desktop"]
+  "keywords": ["wpf", "xaml", "mvvm", "communitytoolkit", "material-design", "materialdesignthemes", "desktop"]
 }
