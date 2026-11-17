@@ -1,0 +1,6 @@
+# Build output of the tools
+bin/
+obj/
+
+# Release packages made by tools/ReleasePack
+artifacts/
