@@ -10,14 +10,10 @@ Scott Chang's Claude Code plugin marketplace.
 |--------|--------|-------------|
 | `ss-workflow` | [initialapex/ss-workflow](https://github.com/initialapex/ss-workflow) (separate repository) | Request-driven gitflow workflow: init, new/check request, review, merge, release |
 | `ss-wpf` | [plugins/ss-wpf](plugins/ss-wpf) | WPF desktop applications. `ss-wpf:mvvm`: MVVM with CommunityToolkit.Mvvm on .NET 8+ and .NET Framework 4.7.2/4.8, or a hand-written base for Visual Studio 2012. `ss-wpf:material-design`: MaterialDesignThemes (MaterialDesignInXaml) 5.x themes, styles, dialogs, and shell for .NET 8+ and .NET Framework 4.7.2/4.8 |
-| `ss-design` | [plugins/ss-design](plugins/ss-design) | Technology-independent design. `ss-design:ood`: object-oriented design (responsibilities, SOLID, design patterns, domain model, code smells and refactoring, error handling) with Mermaid diagrams and a review checklist; C# 7.3 examples |
+| `ss-design` | [plugins/ss-design](plugins/ss-design) | Technology-independent design. `ss-design:ood`: object-oriented design (responsibilities, SOLID, design patterns, domain model, code smells and refactoring, error handling) with Mermaid diagrams and a review checklist; C# 7.3 examples. `ss-design:ui-ux`: UI and UX design that first decides between easy to use and easy to learn (information architecture and flows, layout, forms, tables and feedback, keyboard and accessibility, localization, field operation screens) with Mermaid flows, ASCII wireframes, and a review checklist |
 
-Planned (every plugin of this marketplace is prefixed `ss-` so that its skill namespace
-`<plugin>:<skill>` does not collide with plugins from other marketplaces):
-
-| Plugin | Skills | Scope |
-|--------|--------|-------|
-| `ss-design` | `ui-ux` (added to the existing plugin) | Technology-independent UI/UX design principles and review checklist |
+Every plugin of this marketplace is prefixed `ss-` so that its skill namespace
+`<plugin>:<skill>` does not collide with plugins from other marketplaces.
 
 ## Install
 
