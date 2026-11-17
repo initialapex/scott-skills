@@ -39,6 +39,11 @@ relative path (`./plugins/<plugin>`).
 
 ## Versioning
 
+- The collection carries its own version in `metadata.version` of
+  `.claude-plugin/marketplace.json`; each release of the repository bumps it and is
+  tagged `vX.Y.Z`.
 - Each plugin carries its own `version` in its `.claude-plugin/plugin.json`.
-- Plugins in this repository are tagged `<plugin>/vX.Y.Z`.
+- Plugins in this repository are tagged `<plugin>/vX.Y.Z` when their version changes
+  in a release.
+- Releases go through a `release/vX.Y.Z` branch named after the collection version.
 - `main` holds released versions only; daily work goes to `develop`.
