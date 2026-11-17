@@ -5,6 +5,9 @@
   "owner": {
     "name": "Scott Chang"
   },
+  "metadata": {
+    "version": "0.1.0"
+  },
   "plugins": [
     {
       "name": "ss-workflow",

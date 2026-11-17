@@ -36,6 +36,9 @@ plugins/<plugin>/                 放在這個 repository 裡的 plugin
 
 ## 版本
 
+- 整個 collection 的版號放在 `.claude-plugin/marketplace.json` 的 `metadata.version`；
+  repository 每次發佈都會更新它，並打 `vX.Y.Z` 格式的 tag。
 - 每個 plugin 在自己的 `.claude-plugin/plugin.json` 管理 `version`。
-- 這個 repository 裡的 plugin 打 `<plugin>/vX.Y.Z` 格式的 tag。
+- 這個 repository 裡的 plugin 在發佈時若版號有變，打 `<plugin>/vX.Y.Z` 格式的 tag。
+- 發佈走 `release/vX.Y.Z` 分支，以 collection 版號命名。
 - `main` 只放已發佈的版本，日常開發在 `develop`。
