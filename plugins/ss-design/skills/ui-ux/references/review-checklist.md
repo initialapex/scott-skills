@@ -25,6 +25,10 @@ field operation screens.
 The ids start with `UX-` so they do not collide with other checklists
 (`ss-wpf:mvvm`, `ss-wpf:material-design`, `ss-design:ood`) used in the same review.
 
+The direction never lowers a *must* item of UX-K or a protection against data loss
+(UX-F5, UX-B3); it only changes how the item is met. When the developer asks where a
+rule comes from, cite the source from [sources.md](sources.md).
+
 ## UX-D: Direction
 
 - UX-D1 The program's direction is stated, and the screen follows it or is a recorded
@@ -77,6 +81,8 @@ The ids start with `UX-` so they do not collide with other checklists
   keep it enabled and explain on click. *(should)*
 - UX-I6 Defaults remember the last values *[use]* or are the safe common choice
   *[learn]*; no default for choices with serious consequences. *(should)*
+- UX-I7 Users pick from visible choices instead of recalling codes or values from
+  another screen; the context needed for the decision stays visible. *(should)*
 
 ## UX-T: Tables and lists
 
@@ -115,6 +121,9 @@ The ids start with `UX-` so they do not collide with other checklists
 - UX-W4 Controls size to their text and leave room for longer translations; nothing is
   cut off. *(should)*
 - UX-W5 Dates, numbers, and currency use the user's culture. *(should)*
+- UX-W6 Help fits the direction: reference help on demand (F1, a help link) with no
+  tips in the way *[use]*; inline hints, examples, and first-run guidance *[learn]*.
+  *(consider)*
 
 ## UX-K: Keyboard and accessibility
 
