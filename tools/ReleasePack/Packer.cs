@@ -7,7 +7,10 @@ namespace ReleasePack;
 /// <summary>A plugin as it was packed, for the release notes.</summary>
 internal sealed record PackedPlugin(
     string Name, string Version, string Description, IReadOnlyList<string> Skills,
-    string ZipName, string? BundledFrom, string? BundledTag, bool Pinned);
+    string ZipName, string? BundledFrom, string? BundledRef, bool Pinned);
+
+/// <summary>A remote repository bundled into the stage; every plugin that comes from it shares the folder.</summary>
+internal sealed record RemoteBundle(string RelativePath, string Ref, string RefLabel, string Version, string ZipName);
 
 /// <summary>Builds the release files from the tag vX.Y.Z.</summary>
 internal sealed class Packer(string repoRoot, string version, string outDir, IReadOnlyDictionary<string, string> pluginRefs, bool force)
@@ -65,8 +68,9 @@ internal sealed class Packer(string repoRoot, string version, string outDir, IRe
 
         // Pack each plugin; bundle remote ones into the stage.
         var packed = new List<PackedPlugin>();
+        var bundles = new Dictionary<string, RemoteBundle>(StringComparer.Ordinal);
         foreach (var plugin in plugins)
-            packed.Add(plugin.IsRemote ? PackRemote(plugin, stage, work, marketplace) : PackLocal(plugin, stage));
+            packed.Add(plugin.IsRemote ? PackRemote(plugin, plugins, stage, work, marketplace, bundles) : PackLocal(plugin, stage));
 
         marketplace.Save(marketplacePath);
 
@@ -97,49 +101,116 @@ internal sealed class Packer(string repoRoot, string version, string outDir, IRe
         if (!Directory.Exists(folder))
             throw new ReleaseException($"Plugin {plugin.Name}: folder {plugin.LocalPath} does not exist at {_tag}.");
 
-        var pluginVersion = ReadPluginVersion(plugin.Name, folder);
+        var pluginVersion = ReadPluginVersion(folder)
+                            ?? throw new ReleaseException($"Plugin {plugin.Name}: .claude-plugin/plugin.json with a version is missing.");
         if (!Repository.TagExists(repoRoot, $"{plugin.Name}/v{pluginVersion}"))
             Console.WriteLine($"warning: tag {plugin.Name}/v{pluginVersion} does not exist.");
 
         var zipName = $"{plugin.Name}-v{pluginVersion}.zip";
         Console.WriteLine($"Packing {zipName}...");
         Zip(folder, Path.Combine(_buildDir, zipName), plugin.Name);
-        return new PackedPlugin(plugin.Name, pluginVersion, plugin.Description, ReadSkills(folder), zipName, null, null, false);
+        return new PackedPlugin(plugin.Name, pluginVersion, plugin.Description, SkillNames(plugin, folder), zipName, null, null, false);
     }
 
-    private PackedPlugin PackRemote(PluginEntry plugin, string stage, string work, Marketplace marketplace)
+    /// <summary>
+    /// Bundles the repository of a remote plugin into the stage (once per repository) and points the plugin at it.
+    /// Plugins that come from the same repository share one folder and one zip.
+    /// </summary>
+    private PackedPlugin PackRemote(
+        PluginEntry plugin, IReadOnlyList<PluginEntry> all, string stage, string work, Marketplace marketplace,
+        Dictionary<string, RemoteBundle> bundles)
     {
-        var pinned = plugin.Ref != null;
-        var tag = pluginRefs.GetValueOrDefault(plugin.Name) ?? plugin.Ref ?? Repository.LatestReleaseTag(plugin.Url!);
-        Console.WriteLine($"Bundling {plugin.Name} {tag} from {plugin.Url}...");
+        var siblings = all.Where(p => p.Url == plugin.Url).ToList();
+        if (!bundles.TryGetValue(plugin.Url!, out var bundle))
+        {
+            bundle = FetchRemote(siblings, stage, work);
+            bundles[plugin.Url!] = bundle;
+        }
 
-        var clone = Path.Combine(work, "remote", plugin.Name);
-        Repository.CloneTag(plugin.Url!, tag, clone);
+        marketplace.SetLocalSource(plugin.Name, bundle.RelativePath);
+        var folder = Path.GetFullPath(Path.Combine(stage, bundle.RelativePath));
 
-        var relativePath = $"./plugins/{plugin.Name}";
+        // A repository without plugin.json (plugins defined only by their marketplace entry) takes its version from the ref.
+        var declared = ReadPluginVersion(folder);
+        var pluginVersion = declared ?? bundle.Version;
+        if (siblings.Count == 1 && declared != null && $"v{declared}" != bundle.Ref)
+            Console.WriteLine($"warning: {plugin.Name} {bundle.Ref} carries version {declared} in plugin.json.");
+
+        return new PackedPlugin(plugin.Name, pluginVersion, plugin.Description, SkillNames(plugin, folder),
+            bundle.ZipName, plugin.Url, bundle.RefLabel, plugin.Ref != null);
+    }
+
+    private RemoteBundle FetchRemote(IReadOnlyList<PluginEntry> siblings, string stage, string work)
+    {
+        var url = siblings[0].Url!;
+        var names = string.Join(", ", siblings.Select(p => p.Name));
+
+        // One ref per repository: --plugin-ref of any of its plugins, else the pinned ref, else the latest release tag.
+        var refs = siblings
+            .Select(p => pluginRefs.GetValueOrDefault(p.Name) ?? p.Ref)
+            .Where(r => r != null)
+            .Distinct()
+            .ToList();
+        if (refs.Count > 1)
+            throw new ReleaseException($"Plugins {names} come from {url} but ask for different refs: {string.Join(", ", refs)}.");
+
+        var requested = refs.SingleOrDefault() ?? Repository.LatestReleaseTag(url);
+        var slug = RepoSlug(url);
+        var clone = Path.Combine(work, "remote", slug);
+        string treeish, refText, refLabel, version;
+
+        if (requested != null)
+        {
+            Console.WriteLine($"Bundling {names} {requested} from {url}...");
+            Repository.CloneTag(url, requested, clone);
+            treeish = requested;
+            refText = requested;
+            refLabel = $"tag `{requested}`";
+            version = requested.TrimStart('v');
+        }
+        else
+        {
+            // No release tag: bundle the default branch and record the commit so the zip can be traced.
+            Console.WriteLine($"Bundling {names} from the default branch of {url} (no release tag)...");
+            var commit = Repository.CloneDefaultBranch(url, clone);
+            treeish = "HEAD";
+            refText = commit[..7];
+            refLabel = $"commit `{commit}`";
+            version = commit[..7];
+        }
+
+        // A repository with one plugin keeps the plugin's name as folder; a shared one is named after the repository.
+        var relativePath = siblings.Count == 1 ? $"./plugins/{siblings[0].Name}" : $"./plugins/{slug}";
         var folder = Path.GetFullPath(Path.Combine(stage, relativePath));
         if (Directory.Exists(folder))
-            throw new ReleaseException($"Plugin {plugin.Name}: {relativePath} already exists in the marketplace.");
-        Repository.Extract(clone, tag, folder);
-        marketplace.SetLocalSource(plugin.Name, relativePath);
+            throw new ReleaseException($"{relativePath} already exists in the marketplace.");
+        Repository.Extract(clone, treeish, folder);
 
-        var pluginVersion = ReadPluginVersion(plugin.Name, folder);
-        if ($"v{pluginVersion}" != tag)
-            Console.WriteLine($"warning: {plugin.Name} {tag} carries version {pluginVersion} in plugin.json.");
-
-        var zipName = $"{plugin.Name}-v{pluginVersion}.zip";
+        var zipVersion = ReadPluginVersion(folder) ?? version;
+        var zipName = siblings.Count == 1 ? $"{siblings[0].Name}-v{zipVersion}.zip" : $"{slug}-{refText}.zip";
         Console.WriteLine($"Packing {zipName}...");
-        Zip(folder, Path.Combine(_buildDir, zipName), plugin.Name);
-        return new PackedPlugin(plugin.Name, pluginVersion, plugin.Description, ReadSkills(folder), zipName, plugin.Url, tag, pinned);
+        Zip(folder, Path.Combine(_buildDir, zipName), siblings.Count == 1 ? siblings[0].Name : slug);
+        return new RemoteBundle(relativePath, requested ?? refText, refLabel, version, zipName);
     }
 
-    private static string ReadPluginVersion(string pluginName, string folder)
+    /// <summary>owner-repo of a git URL, for folder and zip names.</summary>
+    private static string RepoSlug(string url)
+    {
+        var parts = url.TrimEnd('/').Replace(".git", "").Split('/', StringSplitOptions.RemoveEmptyEntries);
+        return parts.Length >= 2 ? $"{parts[^2]}-{parts[^1]}" : parts[^1];
+    }
+
+    /// <summary>Skill names of a plugin: those its marketplace entry lists, else every skills/ folder with a SKILL.md.</summary>
+    private static IReadOnlyList<string> SkillNames(PluginEntry plugin, string folder) =>
+        plugin.Skills.Count > 0
+            ? plugin.Skills.Select(s => Path.GetFileName(s.TrimEnd('/'))).Order(StringComparer.Ordinal).ToList()
+            : ReadSkills(folder);
+
+    /// <summary>Version in the plugin.json of a plugin folder; null when the folder has none.</summary>
+    private static string? ReadPluginVersion(string folder)
     {
         var path = Path.Combine(folder, ".claude-plugin", "plugin.json");
-        if (!File.Exists(path))
-            throw new ReleaseException($"Plugin {pluginName}: .claude-plugin/plugin.json is missing.");
-        return JsonNode.Parse(File.ReadAllText(path))?["version"]?.GetValue<string>()
-               ?? throw new ReleaseException($"Plugin {pluginName}: plugin.json has no version.");
+        return File.Exists(path) ? JsonNode.Parse(File.ReadAllText(path))?["version"]?.GetValue<string>() : null;
     }
 
     private static IReadOnlyList<string> ReadSkills(string folder)
@@ -177,8 +248,11 @@ internal sealed class Packer(string repoRoot, string version, string outDir, IRe
         ZipFile.ExtractToDirectory(zipPath, verifyDir);
         var root = Path.Combine(verifyDir, collectionName);
         var targets = new List<string> { root };
+        // Plugins that are defined only by their marketplace entry have no plugin.json; the marketplace check covers them.
         targets.AddRange(Marketplace.Load(Path.Combine(root, Repository.MarketplacePath)).Plugins
-            .Select(p => Path.GetFullPath(Path.Combine(root, p.LocalPath!))));
+            .Select(p => Path.GetFullPath(Path.Combine(root, p.LocalPath!)))
+            .Where(folder => File.Exists(Path.Combine(folder, ".claude-plugin", "plugin.json")))
+            .Distinct());
 
         foreach (var target in targets)
         {

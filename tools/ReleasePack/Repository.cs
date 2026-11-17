@@ -33,8 +33,8 @@ internal static partial class Repository
         });
     }
 
-    /// <summary>Returns the highest release tag vX.Y.Z of a remote repository, skipping prereleases.</summary>
-    public static string LatestReleaseTag(string url)
+    /// <summary>Returns the highest release tag vX.Y.Z of a remote repository, skipping prereleases; null when it has none.</summary>
+    public static string? LatestReleaseTag(string url)
     {
         var output = ProcessRunner.Run("git", ["ls-remote", "--tags", "--refs", url]).Output;
         var best = output
@@ -46,12 +46,19 @@ internal static partial class Repository
             .OrderByDescending(t => t.Version)
             .FirstOrDefault();
 
-        return best.Tag ?? throw new ReleaseException($"No release tag vX.Y.Z found in {url}.");
+        return best.Tag;
     }
 
     /// <summary>Shallow-clones one tag of a remote repository.</summary>
     public static void CloneTag(string url, string tag, string destination) =>
         ProcessRunner.Run("git", ["-c", "advice.detachedHead=false", "clone", "--quiet", "--depth", "1", "--branch", tag, url, destination]);
+
+    /// <summary>Shallow-clones the default branch of a remote repository and returns the commit it is at.</summary>
+    public static string CloneDefaultBranch(string url, string destination)
+    {
+        ProcessRunner.Run("git", ["-c", "advice.detachedHead=false", "clone", "--quiet", "--depth", "1", url, destination]);
+        return ProcessRunner.Run("git", ["rev-parse", "HEAD"], destination).Output.Trim();
+    }
 
     [GeneratedRegex(@"refs/tags/(?<tag>v(\d+)\.(\d+)\.(\d+))$")]
     private static partial Regex ReleaseTagPattern();

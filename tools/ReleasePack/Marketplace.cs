@@ -5,7 +5,8 @@ using System.Text.Json.Nodes;
 namespace ReleasePack;
 
 /// <summary>A plugin entry of marketplace.json.</summary>
-internal sealed record PluginEntry(string Name, string Description, string? LocalPath, string? Url, string? Ref)
+internal sealed record PluginEntry(
+    string Name, string Description, string? LocalPath, string? Url, string? Ref, IReadOnlyList<string> Skills)
 {
     public bool IsRemote => Url != null;
 }
@@ -59,20 +60,27 @@ internal sealed class Marketplace
         var name = plugin["name"]?.GetValue<string>() ?? throw new ReleaseException("A plugin entry has no name.");
         var description = plugin["description"]?.GetValue<string>() ?? "";
         var source = plugin["source"];
+        var skills = (plugin["skills"] as JsonArray)?
+            .Select(s => s?.GetValue<string>() ?? "")
+            .Where(s => s.Length > 0)
+            .ToList() ?? [];
 
         if (source is JsonValue value)
-            return new PluginEntry(name, description, value.GetValue<string>(), null, null);
+            return new PluginEntry(name, description, value.GetValue<string>(), null, null, skills);
 
         if (source is JsonObject obj)
         {
             var kind = obj["source"]?.GetValue<string>();
             var gitRef = obj["ref"]?.GetValue<string>();
+            if (obj["sha"] != null)
+                throw new ReleaseException($"Plugin {name}: a sha-pinned source cannot be bundled yet; pin with ref instead.");
+
             return kind switch
             {
                 "url" => new PluginEntry(name, description, null,
-                    obj["url"]?.GetValue<string>() ?? throw new ReleaseException($"Plugin {name}: url source without url."), gitRef),
+                    obj["url"]?.GetValue<string>() ?? throw new ReleaseException($"Plugin {name}: url source without url."), gitRef, skills),
                 "github" => new PluginEntry(name, description, null,
-                    $"https://github.com/{obj["repo"]?.GetValue<string>() ?? throw new ReleaseException($"Plugin {name}: github source without repo.")}.git", gitRef),
+                    $"https://github.com/{obj["repo"]?.GetValue<string>() ?? throw new ReleaseException($"Plugin {name}: github source without repo.")}.git", gitRef, skills),
                 _ => throw new ReleaseException($"Plugin {name}: source type '{kind}' cannot be bundled."),
             };
         }

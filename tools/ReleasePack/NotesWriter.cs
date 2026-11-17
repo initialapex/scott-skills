@@ -20,7 +20,7 @@ internal static class NotesWriter
         foreach (var p in plugins)
         {
             var skills = p.Skills.Count == 0 ? "" : string.Join(", ", p.Skills.Select(s => $"`{p.Name}:{s}`"));
-            var origin = p.BundledFrom == null ? "" : $" Bundled from {RepoLink(p.BundledFrom)} at tag `{p.BundledTag}`.";
+            var origin = p.BundledFrom == null ? "" : $" Bundled from {RepoLink(p.BundledFrom)} at {p.BundledRef}.";
             var description = Escape(p.Description.TrimEnd());
             if (origin.Length > 0 && description.Length > 0 && !description.EndsWith('.'))
                 description += ".";
@@ -31,8 +31,12 @@ internal static class NotesWriter
 
         sb.Append("\n## Install online\n\n");
         sb.Append($"```\n/plugin marketplace add {OwnerRepo()}\n{installs}```\n");
-        foreach (var p in plugins.Where(p => p.BundledFrom != null && !p.Pinned))
-            sb.Append($"\nOnline installation of `{p.Name}` follows its repository's default branch, not the bundled tag.\n");
+        // Plugins of one repository share one remark.
+        foreach (var repo in plugins.Where(p => p.BundledFrom != null && !p.Pinned).GroupBy(p => p.BundledFrom))
+        {
+            var names = string.Join(", ", repo.Select(p => $"`{p.Name}`"));
+            sb.Append($"\nOnline installation of {names} follows its repository's default branch, not the bundled version.\n");
+        }
 
         sb.Append("\n## Install offline\n\n");
         sb.Append($"Download `{collectionZip}`, extract it, and add the extracted folder as a local marketplace:\n\n");
@@ -43,10 +47,17 @@ internal static class NotesWriter
         sb.Append($"- `{collectionZip}`: the whole marketplace at tag `v{version}`, for offline installation");
         var bundled = plugins.Where(p => p.BundledFrom != null).ToList();
         if (bundled.Count > 0)
-            sb.Append($", with {string.Join(", ", bundled.Select(p => $"`{p.Name}` {p.BundledTag}"))} bundled");
+            sb.Append($", with {string.Join(", ", bundled.Select(p => $"`{p.Name}` {p.BundledRef}"))} bundled");
         sb.Append('\n');
-        foreach (var p in plugins)
-            sb.Append($"- `{p.ZipName}`: the `{p.Name}` plugin only\n");
+        // Plugins that share one repository folder share one zip.
+        foreach (var zip in plugins.GroupBy(p => p.ZipName))
+        {
+            var names = zip.Select(p => $"`{p.Name}`").ToList();
+            var what = names.Count == 1
+                ? $"the {names[0]} plugin only"
+                : $"the shared repository folder of {string.Join(", ", names)}";
+            sb.Append($"- `{zip.Key}`: {what}\n");
+        }
         sb.Append($"- `{Packer.ChecksumFile}`: SHA-256 checksums of the zip files\n");
         return sb.ToString();
     }
