@@ -1,6 +1,6 @@
 ---
 name: ui-ux
-description: 'Design and review user interfaces and user experience, mainly for desktop applications - first asking the developer whether the program must be easy to use (efficiency for frequent, skilled users) or easy to learn (new or occasional users), then information architecture, screens and navigation, task flows, empty, loading, and error states, layout, spacing, density, visual hierarchy, color and contrast, forms and input validation messages, data tables, confirmations and undo, progress and error feedback, UI wording, the operation manual (one English HTML file that says how every control behaves), keyboard operation and focus order, accessibility, DPI scaling, localization, and touch screens for field operators - with Mermaid flows and ASCII wireframes. Use this whenever the user designs a new screen, window, dialog, wizard, or workflow, asks how a screen should be laid out or behave, asks whether a UI is easy to use, wants a usability or UX review of a screen, screenshot, or mockup, wants to simplify a cluttered screen, writes UI messages and labels, or writes or updates the operation manual of a program, in WPF or any other UI technology. Not for XAML styling or MaterialDesignThemes implementation, not for ViewModel or class design, and not for logo, brand, or marketing graphics.'
+description: 'Design and review user interfaces and user experience, mainly for desktop applications - first asking the developer whether the program must be easy to use (efficiency for frequent, skilled users) or easy to learn (new or occasional users), then information architecture, screens and navigation, task flows, empty, loading, and error states, layout, spacing, density, visual hierarchy, color and contrast, forms and input validation messages, data tables, confirmations and undo, progress and error feedback, UI wording, the operation manual (one English HTML file that says how every control behaves), keyboard operation and focus order, accessibility, DPI scaling, localization, and touch screens for field operators - with Mermaid flows and ASCII wireframes. Use this whenever the user designs a new screen, window, dialog, wizard, or workflow, asks how a screen should be laid out or behave, asks whether a UI is easy to use, wants a usability or UX review of a screen, screenshot, or mockup (including a heuristic evaluation with Nielsen's 10 usability heuristics), wants to simplify a cluttered screen, writes UI messages and labels, or writes or updates the operation manual of a program, in WPF or any other UI technology. Not for XAML styling or MaterialDesignThemes implementation, not for ViewModel or class design, and not for logo, brand, or marketing graphics.'
 ---
 
 # UI and UX design
@@ -48,7 +48,10 @@ record exceptions: [references/direction.md](references/direction.md).
   with the checklist ids, then propose the redesign in the same output format.
 - **Review**: the developer asks whether a screen, screenshot, mockup, or XAML is good.
   Go through [references/review-checklist.md](references/review-checklist.md) and report
-  each finding with its location, the rule, and the fix.
+  each finding with its location, the rule, and the fix. When the developer asks for a
+  heuristic evaluation with Nielsen's 10 heuristics, group the same findings by
+  heuristic using the mapping in [references/sources.md](references/sources.md), and
+  say which heuristics have no finding.
 
 ## Core rules
 
