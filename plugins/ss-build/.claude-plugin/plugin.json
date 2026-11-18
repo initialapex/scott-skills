@@ -1,0 +1,11 @@
+{
+  "name": "ss-build",
+  "displayName": "SS Build",
+  "version": "0.1.0",
+  "description": "Build and release helpers for Windows projects: a version generator that takes the version from git tags (C# and C++ with MSBuild), and a release package script that zips the release build, with the requests or edits that set them up in a project",
+  "author": {
+    "name": "Scott Chang"
+  },
+  "license": "MIT",
+  "keywords": ["msbuild", "version", "git-tag", "release", "package", "powershell", "csharp", "cpp"]
+}
