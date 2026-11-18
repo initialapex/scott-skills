@@ -38,6 +38,12 @@
       "source": "./plugins/ss-build"
     },
     {
+      "name": "ss-firmware",
+      "description": "Firmware skills in C: a layered, function-based architecture with struct and function pointer objects (OOD in C) for ESP32 (ESP-IDF), STM32 (HAL), Nordic (nRF Connect SDK), NXP (MCUXpresso SDK), and FX2/FX3 USB controllers, with host-side unit tests and a review checklist",
+      "category": "development",
+      "source": "./plugins/ss-firmware"
+    },
+    {
       "name": "taste-skill",
       "description": "Art direction, reference images and a browser check for professional company websites instead of generic AI pages (leonxlnx/taste-skill, MIT)",
       "category": "development",
