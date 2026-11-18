@@ -90,8 +90,8 @@
       "license": "Apache-2.0"
     },
     {
-      "name": "example-skills",
-      "description": "Collection of example skills demonstrating various capabilities including skill creation, MCP building, visual design, algorithmic art, internal communications, web testing, artifact building, Slack GIFs, and theme styling",
+      "name": "cc-skills",
+      "description": "Anthropic's practical skills for Claude Code and Claude: skill creation, MCP server building, frontend design, web app testing, web artifacts, canvas and brand design, themes, algorithmic art, Slack GIFs, document co-authoring, and internal communications (example-skills upstream)",
       "category": "development",
       "source": {
         "source": "github",
