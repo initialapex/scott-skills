@@ -5,7 +5,9 @@ and how each control behaves. It is the form of the design that a user reads. Th
 design (see design-output.md) is written before the screen exists; the manual is kept
 true after it exists.
 
-Use it for a program with a GUI. A program without one has nothing to put in it.
+Every program with a GUI has one, in addition to its spec. The first design that adds a
+view creates it from the template; every later change keeps it true. A program without
+a GUI has nothing to put in it.
 
 ## Format
 

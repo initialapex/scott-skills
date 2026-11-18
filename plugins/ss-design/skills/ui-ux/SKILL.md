@@ -40,9 +40,10 @@ record exceptions: [references/direction.md](references/direction.md).
 
 - **Design**: a new screen, dialog, wizard, or flow. Produce the output of
   [references/design-output.md](references/design-output.md): direction, flow, ASCII
-  wireframes, component and state table, UI text, open points. When the program has an operation
-  manual, a design that adds or changes a view, a control, a shortcut, or a message
-  also updates it: [references/operation-manual.md](references/operation-manual.md).
+  wireframes, component and state table, UI text, open points. A program with a GUI has an
+  operation manual next to its spec: a design that adds or changes a view, a control, a
+  shortcut, or a message creates it (the first time) or updates it, see
+  [references/operation-manual.md](references/operation-manual.md).
 - **Improve**: an existing screen is cluttered, slow, or confusing. List the problems
   with the checklist ids, then propose the redesign in the same output format.
 - **Review**: the developer asks whether a screen, screenshot, mockup, or XAML is good.

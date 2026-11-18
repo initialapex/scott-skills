@@ -122,8 +122,8 @@ they answer.
 ## Operation manual
 
 The design is the plan; the operation manual is what a user reads once the screen
-exists. When the program has a manual, a design that adds, changes, or removes a view,
-a control, a shortcut, or a message lists the manual among the files to update, and the
+exists. A program with a GUI has a manual, so a design that adds, changes, or removes a view,
+a control, a shortcut, or a message lists the manual among the files to create or update, and the
 control names, states, and texts of the manual are the ones of the Components and
 states table and the UI text above. Format, structure, and the rules for the control
 table: operation-manual.md.

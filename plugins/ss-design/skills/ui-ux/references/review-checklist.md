@@ -20,8 +20,7 @@ it; list other problems separately as "later".
 
 Items marked *[use]* apply only to easy-to-use screens, items marked *[learn]* only to
 easy-to-learn screens; unmarked items apply to both. Items under UX-O apply only to
-field operation screens, and items under UX-M only to a program that has an operation
-manual.
+field operation screens, and items under UX-M only to a program with a GUI.
 
 The ids start with `UX-` so they do not collide with other checklists
 (`ss-wpf:mvvm`, `ss-wpf:material-design`, `ss-design:ood`) used in the same review.
@@ -170,8 +169,9 @@ rule comes from, cite the source from [sources.md](sources.md).
 
 ## UX-M: Operation manual
 
-- UX-M1 Every view, control, shortcut, and message that the change adds, changes, or
-  removes is reflected in the manual, in the same change. *(should)*
+- UX-M1 The program has an operation manual, and every view, control, shortcut, and
+  message that the change adds, changes, or removes is reflected in it, in the same
+  change. *(should)*
 - UX-M2 Each row says what the user sees and what happens, with the label and message
   text exactly as on the screen, and no class, ViewModel, or command names. *(should)*
 - UX-M3 The behavior in the manual is what the screen does: states in which a control is
