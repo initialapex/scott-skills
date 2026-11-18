@@ -12,7 +12,7 @@ Scott Chang's Claude Code plugin marketplace.
 | `ss-wpf` | [plugins/ss-wpf](plugins/ss-wpf) | WPF desktop applications. `ss-wpf:mvvm`: MVVM with CommunityToolkit.Mvvm on .NET 8+ and .NET Framework 4.7.2/4.8, or a hand-written base for Visual Studio 2012. `ss-wpf:material-design`: MaterialDesignThemes (MaterialDesignInXaml) 5.x themes, styles, dialogs, and shell for .NET 8+ and .NET Framework 4.7.2/4.8 |
 | `taste-skill` | [leonxlnx/taste-skill](https://github.com/leonxlnx/taste-skill) (third party, MIT) | Art direction, reference images, and a browser check for professional company websites. `taste-skill:taste-skill` |
 | `ui-skills` | [ibelick/ui-skills](https://github.com/ibelick/ui-skills) (third party, MIT) | Skills for design engineers: UI cleanup and accessibility, metadata, and motion performance fixes. `ui-skills:baseline-ui`, `ui-skills:fixing-accessibility`, and more |
-| `document-skills`, `example-skills`, `llm-api`, `academy-guide`, `discernment-nudge` | [anthropics/skills](https://github.com/anthropics/skills) (third party, Apache-2.0) | The plugins of Anthropic's skills repository: Office and PDF documents; skill-creator, frontend-design, and other example skills; Claude API reference; and more. `llm-api` is `claude-api` upstream, renamed because third-party marketplaces cannot use the `claude-` prefix |
+| `document-skills`, `cc-skills`, `llm-api`, `academy-guide`, `discernment-nudge` | [anthropics/skills](https://github.com/anthropics/skills) (third party, Apache-2.0) | The plugins of Anthropic's skills repository: Office and PDF documents; skill-creator, frontend-design, and other practical skills; Claude API reference; and more. Two plugins are renamed from upstream: `llm-api` is `claude-api` (third-party marketplaces cannot use the `claude-` prefix), and `cc-skills` is `example-skills` (the name reads like a sample) |
 | `ss-design` | [plugins/ss-design](plugins/ss-design) | Technology-independent design. `ss-design:ood`: object-oriented design (responsibilities, SOLID, design patterns, domain model, code smells and refactoring, error handling) with Mermaid diagrams and a review checklist; C# 7.3 examples. `ss-design:ui-ux`: UI and UX design that first decides between easy to use and easy to learn (information architecture and flows, layout, forms, tables and feedback, keyboard and accessibility, localization, field operation screens) with Mermaid flows, ASCII wireframes, and a review checklist |
 | `ss-build` | [plugins/ss-build](plugins/ss-build) | Build and release helpers for Windows projects (C# and C++ with MSBuild, Windows PowerShell). `ss-build:git-version`: the version comes from git tags, with a generator that writes it into ignored files and the conversion of a project to it. `ss-build:release-package`: one script that zips the release build, one zip per platform |
 
@@ -32,7 +32,7 @@ Run inside a Claude Code session:
 /plugin install taste-skill@scott-skills
 /plugin install ui-skills@scott-skills
 /plugin install document-skills@scott-skills
-/plugin install example-skills@scott-skills
+/plugin install cc-skills@scott-skills
 ```
 
 The third-party plugins are listed by GitHub repository and follow its default branch.
@@ -53,7 +53,7 @@ Extract it and add the extracted folder as a local marketplace:
 /plugin install taste-skill@scott-skills
 /plugin install ui-skills@scott-skills
 /plugin install document-skills@scott-skills
-/plugin install example-skills@scott-skills
+/plugin install cc-skills@scott-skills
 ```
 
 ## Layout
