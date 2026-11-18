@@ -34,7 +34,7 @@ which the direction decides.
 | 7 | Flexibility and efficiency of use | The easy-to-use direction; UX-F2, UX-K5, UX-T5, UX-I6 |
 | 8 | Aesthetic and minimalist design | Core rule 4; UX-F1, UX-L2, UX-L4, UX-B6 |
 | 9 | Help users recognize, diagnose, and recover from errors | UX-I4, UX-B7, UX-O5 |
-| 10 | Help and documentation | direction.md (Help row); UX-W6, UX-T3 |
+| 10 | Help and documentation | direction.md (Help row); UX-W6, UX-T3, UX-M1 to UX-M3 |
 
 ## ISO 9241-110 interaction principles
 

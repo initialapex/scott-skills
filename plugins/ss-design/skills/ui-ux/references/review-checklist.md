@@ -20,7 +20,8 @@ it; list other problems separately as "later".
 
 Items marked *[use]* apply only to easy-to-use screens, items marked *[learn]* only to
 easy-to-learn screens; unmarked items apply to both. Items under UX-O apply only to
-field operation screens.
+field operation screens, and items under UX-M only to a program that has an operation
+manual.
 
 The ids start with `UX-` so they do not collide with other checklists
 (`ss-wpf:mvvm`, `ss-wpf:material-design`, `ss-design:ood`) used in the same review.
@@ -166,3 +167,14 @@ rule comes from, cite the source from [sources.md](sources.md).
   *(must)*
 - UX-O6 Work in progress survives interruptions and restarts; no timeouts discard input.
   *(should)*
+
+## UX-M: Operation manual
+
+- UX-M1 Every view, control, shortcut, and message that the change adds, changes, or
+  removes is reflected in the manual, in the same change. *(should)*
+- UX-M2 Each row says what the user sees and what happens, with the label and message
+  text exactly as on the screen, and no class, ViewModel, or command names. *(should)*
+- UX-M3 The behavior in the manual is what the screen does: states in which a control is
+  disabled, validation rules, and the state after the action. *(must)*
+- UX-M4 The manual is one English HTML file with inline style and nothing loaded from
+  the network, in the structure of the template. *(consider)*
