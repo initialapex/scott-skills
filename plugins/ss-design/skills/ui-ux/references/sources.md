@@ -28,13 +28,13 @@ which the direction decides.
 | 1 | Visibility of system status | Core rule 7; UX-B1, UX-B2, UX-O3 |
 | 2 | Match between the system and the real world | Core rule 2; UX-B7, UX-W1, UX-T1 |
 | 3 | User control and freedom | UX-F5, UX-B2 (cancel), UX-B3 (undo) |
-| 4 | Consistency and standards | Core rule 5; UX-D2, UX-L7, UX-W1, UX-W2 |
+| 4 | Consistency and standards | Core rule 5; UX-D2, UX-L7, UX-L8, UX-L9, UX-W1, UX-W2 |
 | 5 | Error prevention | Core rule 6; UX-I3, UX-I6, UX-B3, UX-O4 |
 | 6 | Recognition rather than recall | UX-I1, UX-I7, UX-K5, UX-T2 |
 | 7 | Flexibility and efficiency of use | The easy-to-use direction; UX-F2, UX-K5, UX-T5, UX-I6 |
 | 8 | Aesthetic and minimalist design | Core rule 4; UX-F1, UX-L2, UX-L4, UX-B6 |
 | 9 | Help users recognize, diagnose, and recover from errors | UX-I4, UX-B7, UX-O5 |
-| 10 | Help and documentation | direction.md (Help row); UX-W6, UX-T3 |
+| 10 | Help and documentation | direction.md (Help row); UX-W6, UX-T3, UX-M1 to UX-M3 |
 
 ## ISO 9241-110 interaction principles
 

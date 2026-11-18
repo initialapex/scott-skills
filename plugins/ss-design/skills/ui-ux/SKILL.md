@@ -1,6 +1,6 @@
 ---
 name: ui-ux
-description: 'Design and review user interfaces and user experience, mainly for desktop applications - first asking the developer whether the program must be easy to use (efficiency for frequent, skilled users) or easy to learn (new or occasional users), then information architecture, screens and navigation, task flows, empty, loading, and error states, layout, spacing, density, visual hierarchy, color and contrast, forms and input validation messages, data tables, confirmations and undo, progress and error feedback, UI wording, keyboard operation and focus order, accessibility, DPI scaling, localization, and touch screens for field operators - with Mermaid flows and ASCII wireframes. Use this whenever the user designs a new screen, window, dialog, wizard, or workflow, asks how a screen should be laid out or behave, asks whether a UI is easy to use, wants a usability or UX review of a screen, screenshot, or mockup, wants to simplify a cluttered screen, or writes UI messages and labels, in WPF or any other UI technology. Not for XAML styling or MaterialDesignThemes implementation, not for ViewModel or class design, and not for logo, brand, or marketing graphics.'
+description: 'Design and review user interfaces and user experience, mainly for desktop applications - first asking the developer whether the program must be easy to use (efficiency for frequent, skilled users) or easy to learn (new or occasional users), then information architecture, screens and navigation, task flows, empty, loading, and error states, layout, spacing, density, visual hierarchy, color and contrast, forms and input validation messages, data tables, confirmations and undo, progress and error feedback, UI wording, the operation manual (one English HTML file that says how every control behaves), keyboard operation and focus order, accessibility, DPI scaling, localization, and touch screens for field operators - with Mermaid flows and ASCII wireframes. Use this whenever the user designs a new screen, window, dialog, wizard, or workflow, asks how a screen should be laid out or behave, asks whether a UI is easy to use, wants a usability or UX review of a screen, screenshot, or mockup, wants to simplify a cluttered screen, writes UI messages and labels, or writes or updates the operation manual of a program, in WPF or any other UI technology. Not for XAML styling or MaterialDesignThemes implementation, not for ViewModel or class design, and not for logo, brand, or marketing graphics.'
 ---
 
 # UI and UX design
@@ -40,7 +40,10 @@ record exceptions: [references/direction.md](references/direction.md).
 
 - **Design**: a new screen, dialog, wizard, or flow. Produce the output of
   [references/design-output.md](references/design-output.md): direction, flow, ASCII
-  wireframes, component and state table, UI text, open points.
+  wireframes, component and state table, UI text, open points. A program with a GUI has an
+  operation manual next to its spec: a design that adds or changes a view, a control, a
+  shortcut, or a message creates it (the first time) or updates it, see
+  [references/operation-manual.md](references/operation-manual.md).
 - **Improve**: an existing screen is cluttered, slow, or confusing. List the problems
   with the checklist ids, then propose the redesign in the same output format.
 - **Review**: the developer asks whether a screen, screenshot, mockup, or XAML is good.
@@ -59,8 +62,10 @@ record exceptions: [references/direction.md](references/direction.md).
    read-only, and no permission are designed, not left to chance.
 4. **One primary action per screen or area.** Visual weight follows importance; the
    primary action is easy to find, a destructive one is hard to hit by accident.
-5. **Same thing, same name, same place.** Follow the platform's conventions and the
-   application's own; a term means one thing everywhere.
+5. **Same thing, same name, same place, same spacing.** Follow the platform's
+   conventions and the application's own; a term means one thing everywhere, and the
+   same kind of element has the same margin and padding on every screen, from one
+   spacing scale.
 6. **Prevent errors before reporting them.** Constrain input, offer defaults, and make
    messages say what happened and what to do next.
 7. **Answer every action.** Visible feedback within 0.1 s, a busy state after 1 s, and
@@ -82,6 +87,7 @@ record exceptions: [references/direction.md](references/direction.md).
 | Usability and accessibility: keyboard, focus, contrast, DPI scaling, text length, localization, testing | [references/usability-accessibility.md](references/usability-accessibility.md) |
 | Field operation: touch screens, viewing distance, status at a glance, protection against mis-touch, alarms | [references/field-operation.md](references/field-operation.md) |
 | Design output: flow, ASCII wireframes, component and state table, UI text, open points | [references/design-output.md](references/design-output.md) |
+| Operation manual: one English HTML file with a table row per control, shortcuts, messages; kept true with every change | [references/operation-manual.md](references/operation-manual.md), [templates/operation-manual.html](templates/operation-manual.html) |
 | Review checklist | [references/review-checklist.md](references/review-checklist.md) |
 | Sources: Nielsen's heuristics, ISO 9241-110, WCAG, Windows guidelines, and the laws behind the rules, mapped to the checklist ids | [references/sources.md](references/sources.md) |
 

@@ -6,7 +6,7 @@
     "name": "Scott Chang"
   },
   "metadata": {
-    "version": "0.2.0"
+    "version": "0.3.0"
   },
   "plugins": [
     {
@@ -27,9 +27,15 @@
     },
     {
       "name": "ss-design",
-      "description": "Technology-independent design skills: object-oriented design (responsibilities, SOLID, patterns, domain model, refactoring) and UI/UX design (easy to use or easy to learn, flows, layout, forms, accessibility), with review checklists",
+      "description": "Technology-independent design principles (the object-oriented design examples are in C# 7.3): object-oriented design (responsibilities, SOLID, patterns, domain model, refactoring) and UI/UX design (easy to use or easy to learn, flows, layout, forms, accessibility), with review checklists",
       "category": "development",
       "source": "./plugins/ss-design"
+    },
+    {
+      "name": "ss-build",
+      "description": "Build and release helpers for Windows projects: a version generator that takes the version from git tags (C# and C++ with MSBuild), and a release package script that zips the release build, with the requests or edits that set them up in a project",
+      "category": "development",
+      "source": "./plugins/ss-build"
     },
     {
       "name": "taste-skill",

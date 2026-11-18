@@ -118,3 +118,12 @@ Follow the wording rules in forms-tables-feedback.md.
 
 Do not resolve open points by assumption; ask the developer and update the design when
 they answer.
+
+## Operation manual
+
+The design is the plan; the operation manual is what a user reads once the screen
+exists. A program with a GUI has a manual, so a design that adds, changes, or removes a view,
+a control, a shortcut, or a message lists the manual among the files to create or update, and the
+control names, states, and texts of the manual are the ones of the Components and
+states table and the UI text above. Format, structure, and the rules for the control
+table: operation-manual.md.
