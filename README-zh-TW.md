@@ -11,7 +11,7 @@ Scott Chang 的 Claude Code plugin marketplace。
 | `ss-workflow` | [initialapex/ss-workflow](https://github.com/initialapex/ss-workflow)（獨立 repository） | 以 request 驅動的 gitflow 工作流：init、new/check request、review、merge、release |
 | `ss-wpf` | [plugins/ss-wpf](plugins/ss-wpf) | WPF 桌面應用程式。`ss-wpf:mvvm`：MVVM，.NET 8 以上和 .NET Framework 4.7.2/4.8 用 CommunityToolkit.Mvvm，Visual Studio 2012 用手寫的基底類別。`ss-wpf:material-design`：MaterialDesignThemes（MaterialDesignInXaml）5.x 的主題、樣式、對話框與 shell，適用 .NET 8 以上和 .NET Framework 4.7.2/4.8 |
 | `taste-skill` | [leonxlnx/taste-skill](https://github.com/leonxlnx/taste-skill)（第三方，MIT） | 為專業公司網站提供美術指導、參考圖片與瀏覽器檢查。`taste-skill:taste-skill` |
-| `ui-skills` | [ibelick/ui-skills](https://github.com/ibelick/ui-skills)（第三方，MIT） | 給 design engineer 的 skill：UI 清理、無障礙、metadata 與動畫效能修正、canvas、DESIGN.md。`ui-skills:baseline-ui`、`ui-skills:improve-ui` 等 |
+| `ui-skills` | [ibelick/ui-skills](https://github.com/ibelick/ui-skills)（第三方，MIT） | 給 design engineer 的 skill：UI 清理，以及無障礙、metadata 與動畫效能修正。`ui-skills:baseline-ui`、`ui-skills:fixing-accessibility` 等 |
 | `document-skills`、`example-skills`、`llm-api`、`academy-guide`、`discernment-nudge` | [anthropics/skills](https://github.com/anthropics/skills)（第三方，Apache-2.0） | Anthropic skills repository 的 plugin：Office 與 PDF 文件；skill-creator、frontend-design 等範例 skill；Claude API 參考；以及其他。`llm-api` 在上游叫 `claude-api`，因為第三方 marketplace 不能使用 `claude-` 前綴，所以改名 |
 | `ss-design` | [plugins/ss-design](plugins/ss-design) | 與技術無關的設計。`ss-design:ood`：物件導向設計（責任分配、SOLID、設計模式、領域模型、code smell 與重構、錯誤處理），附 Mermaid 圖與 review checklist；範例為 C# 7.3。`ss-design:ui-ux`：UI/UX 設計，先決定 Easy to use 或 Easy to learn（資訊架構與流程、版面、表單／表格與回饋、鍵盤與無障礙、多語系、現場操作畫面），附 Mermaid 流程圖、ASCII 線框圖與 review checklist |
 

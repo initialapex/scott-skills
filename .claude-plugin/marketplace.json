@@ -48,7 +48,7 @@
     },
     {
       "name": "ui-skills",
-      "description": "Skills for design engineers: clean up UI code, audit accessibility, metadata and motion performance, build canvases, and write DESIGN.md (ibelick/ui-skills, MIT)",
+      "description": "Skills for design engineers: clean up UI code and fix accessibility, metadata, and motion performance issues (ibelick/ui-skills, MIT)",
       "category": "development",
       "source": {
         "source": "github",
@@ -57,13 +57,9 @@
       "strict": false,
       "skills": [
         "./skills/baseline-ui",
-        "./skills/component-canvas",
-        "./skills/create-canvas",
-        "./skills/create-design-md",
         "./skills/fixing-accessibility",
         "./skills/fixing-metadata",
         "./skills/fixing-motion-performance",
-        "./skills/improve-ui",
         "./skills/ui-skills-root"
       ],
       "homepage": "https://github.com/ibelick/ui-skills",

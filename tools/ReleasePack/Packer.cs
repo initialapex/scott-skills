@@ -201,10 +201,21 @@ internal sealed class Packer(string repoRoot, string version, string outDir, IRe
     }
 
     /// <summary>Skill names of a plugin: those its marketplace entry lists, else every skills/ folder with a SKILL.md.</summary>
-    private static IReadOnlyList<string> SkillNames(PluginEntry plugin, string folder) =>
-        plugin.Skills.Count > 0
-            ? plugin.Skills.Select(s => Path.GetFileName(s.TrimEnd('/'))).Order(StringComparer.Ordinal).ToList()
-            : ReadSkills(folder);
+    private static IReadOnlyList<string> SkillNames(PluginEntry plugin, string folder)
+    {
+        if (plugin.Skills.Count == 0)
+            return ReadSkills(folder);
+
+        // Every skill the marketplace entry lists must exist in the packed folder, or the zip and the notes would disagree.
+        var missing = plugin.Skills
+            .Where(s => !File.Exists(Path.Combine(folder, s.Trim('/'), "SKILL.md")))
+            .ToList();
+        if (missing.Count > 0)
+            throw new ReleaseException(
+                $"Plugin {plugin.Name}: the marketplace entry lists skills that are missing from the packed folder: {string.Join(", ", missing)}.");
+
+        return plugin.Skills.Select(s => Path.GetFileName(s.TrimEnd('/'))).Order(StringComparer.Ordinal).ToList();
+    }
 
     /// <summary>Version in the plugin.json of a plugin folder; null when the folder has none.</summary>
     private static string? ReadPluginVersion(string folder)
