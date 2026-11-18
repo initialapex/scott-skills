@@ -1,12 +1,12 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "scott-skills",
-  "description": "Scott Chang's Claude Code plugins: the ss-workflow request workflow and design skills",
+  "description": "Scott Chang's Claude Code plugins: the ss-workflow request workflow, WPF and design skills, and bundled third-party skills (anthropics/skills, taste-skill)",
   "owner": {
     "name": "Scott Chang"
   },
   "metadata": {
-    "version": "0.1.0"
+    "version": "0.2.0"
   },
   "plugins": [
     {
@@ -30,6 +30,129 @@
       "description": "Technology-independent design skills: object-oriented design (responsibilities, SOLID, patterns, domain model, refactoring) and UI/UX design (easy to use or easy to learn, flows, layout, forms, accessibility), with review checklists",
       "category": "development",
       "source": "./plugins/ss-design"
+    },
+    {
+      "name": "taste-skill",
+      "description": "Art direction, reference images and a browser check for professional company websites instead of generic AI pages (leonxlnx/taste-skill, MIT)",
+      "category": "development",
+      "source": {
+        "source": "github",
+        "repo": "leonxlnx/taste-skill"
+      },
+      "strict": false,
+      "skills": [
+        "./skills/taste-skill"
+      ],
+      "homepage": "https://github.com/leonxlnx/taste-skill",
+      "license": "MIT"
+    },
+    {
+      "name": "ui-skills",
+      "description": "Skills for design engineers: clean up UI code and fix accessibility, metadata, and motion performance issues (ibelick/ui-skills, MIT)",
+      "category": "development",
+      "source": {
+        "source": "github",
+        "repo": "ibelick/ui-skills"
+      },
+      "strict": false,
+      "skills": [
+        "./skills/baseline-ui",
+        "./skills/fixing-accessibility",
+        "./skills/fixing-metadata",
+        "./skills/fixing-motion-performance",
+        "./skills/ui-skills-root"
+      ],
+      "homepage": "https://github.com/ibelick/ui-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "document-skills",
+      "description": "Collection of document processing suite including Excel, Word, PowerPoint, and PDF capabilities",
+      "category": "development",
+      "source": {
+        "source": "github",
+        "repo": "anthropics/skills"
+      },
+      "strict": false,
+      "skills": [
+        "./skills/xlsx",
+        "./skills/docx",
+        "./skills/pptx",
+        "./skills/pdf"
+      ],
+      "homepage": "https://github.com/anthropics/skills",
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "example-skills",
+      "description": "Collection of example skills demonstrating various capabilities including skill creation, MCP building, visual design, algorithmic art, internal communications, web testing, artifact building, Slack GIFs, and theme styling",
+      "category": "development",
+      "source": {
+        "source": "github",
+        "repo": "anthropics/skills"
+      },
+      "strict": false,
+      "skills": [
+        "./skills/algorithmic-art",
+        "./skills/brand-guidelines",
+        "./skills/canvas-design",
+        "./skills/doc-coauthoring",
+        "./skills/frontend-design",
+        "./skills/internal-comms",
+        "./skills/mcp-builder",
+        "./skills/skill-creator",
+        "./skills/slack-gif-creator",
+        "./skills/theme-factory",
+        "./skills/web-artifacts-builder",
+        "./skills/webapp-testing"
+      ],
+      "homepage": "https://github.com/anthropics/skills",
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "llm-api",
+      "description": "Claude API and SDK documentation skill for building LLM-powered applications",
+      "category": "development",
+      "source": {
+        "source": "github",
+        "repo": "anthropics/skills"
+      },
+      "strict": false,
+      "skills": [
+        "./skills/claude-api"
+      ],
+      "homepage": "https://github.com/anthropics/skills",
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "academy-guide",
+      "description": "Recommends relevant Claude Academy courses, tutorials, and use cases when users ask how to use Claude",
+      "category": "development",
+      "source": {
+        "source": "github",
+        "repo": "anthropics/skills"
+      },
+      "strict": false,
+      "skills": [
+        "./skills/academy-guide"
+      ],
+      "homepage": "https://github.com/anthropics/skills",
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "discernment-nudge",
+      "description": "Appends two or three short follow-up questions after a substantive answer to help users check key facts, probe the reasoning, and notice missing context",
+      "category": "development",
+      "source": {
+        "source": "github",
+        "repo": "anthropics/skills"
+      },
+      "strict": false,
+      "skills": [
+        "./skills/discernment-nudge"
+      ],
+      "homepage": "https://github.com/anthropics/skills",
+      "license": "Apache-2.0"
     }
   ]
 }
