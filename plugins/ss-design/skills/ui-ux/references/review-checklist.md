@@ -20,7 +20,7 @@ it; list other problems separately as "later".
 
 Items marked *[use]* apply only to easy-to-use screens, items marked *[learn]* only to
 easy-to-learn screens; unmarked items apply to both. Items under UX-O apply only to
-field operation screens.
+field operation screens, and items under UX-M only to a program with a GUI.
 
 The ids start with `UX-` so they do not collide with other checklists
 (`ss-wpf:mvvm`, `ss-wpf:material-design`, `ss-design:ood`) used in the same review.
@@ -67,6 +67,15 @@ rule comes from, cite the source from [sources.md](sources.md).
 - UX-L6 The layout works at the smallest supported window size; the right areas grow;
   a minimum window size prevents breaking. *(should)*
 - UX-L7 Dialog buttons follow the platform order and are verbs. *(should)*
+- UX-L8 The same kind of element has the same margin and padding on every screen
+  (window margin, label to field, field to field, group to group, button padding,
+  dialog button row); the screen matches a similar neighbor. *(should)*
+- UX-L9 Every margin and padding is a value of the program's spacing scale, taken from
+  its style or resource, not a one-off number. *(should)*
+- UX-L10 Visual guidance: the primary action is set apart, the reading order and the
+  Tab order follow the task, the first focus is right, each state is visible, and the
+  user is told the next step (empty and disabled states explain themselves).
+  *(should)*
 
 ## UX-I: Forms and input
 
@@ -157,3 +166,15 @@ rule comes from, cite the source from [sources.md](sources.md).
   *(must)*
 - UX-O6 Work in progress survives interruptions and restarts; no timeouts discard input.
   *(should)*
+
+## UX-M: Operation manual
+
+- UX-M1 The program has an operation manual, and every view, control, shortcut, and
+  message that the change adds, changes, or removes is reflected in it, in the same
+  change. *(should)*
+- UX-M2 Each row says what the user sees and what happens, with the label and message
+  text exactly as on the screen, and no class, ViewModel, or command names. *(should)*
+- UX-M3 The behavior in the manual is what the screen does: states in which a control is
+  disabled, validation rules, and the state after the action. *(must)*
+- UX-M4 The manual is one English HTML file with inline style and nothing loaded from
+  the network, in the structure of the template. *(consider)*

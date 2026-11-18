@@ -43,6 +43,29 @@ Use a small spacing scale based on 4 px and apply it consistently:
   noise.
 - Related things are closer to each other than to unrelated things (proximity).
 
+### Consistent margin and padding
+
+The same kind of element gets the same margin and padding on every screen. Users read
+unequal gaps as meaning something, and unequal gaps between screens of one program
+look careless.
+
+- **One scale, defined once.** Write the scale down for the program (the values above,
+  or the ones its existing screens use) and keep each value in one place: a style, a
+  resource, or a theme token. A screen refers to it by name and does not type its own
+  number.
+- **Per kind of element, one value.** Decide it once for: the margin around window and
+  dialog content, label to field, field to field in a group, group to group, section
+  to section, the padding inside buttons and list items, and the row of dialog buttons.
+  Every screen uses these values for these elements.
+- **No value off the scale.** A gap that looks wrong is fixed with a scale value, not
+  with a one-off number. A value that is really needed is added to the scale first, and
+  then used everywhere it applies.
+- **Compare with the neighbor.** When a screen is added or changed, put it next to a
+  similar existing screen: the same kind of element has the same gap. Where they
+  differ, one of them is wrong; fix the odd one, and name which it is.
+- Equal controls have equal sizes (buttons of one row, fields of one column), and
+  labels and fields share their edges.
+
 ## Density
 
 | | Easy to use | Easy to learn | Field operation |
@@ -69,6 +92,26 @@ density switch only when both kinds of users really share the program.
   than labels.
 - Remove before adding: every element that does not serve the task makes the others
   harder to find.
+
+## Visual guidance
+
+Guide the eye and the next step, so that nobody has to hunt for what to do:
+
+- **One primary action** per screen, styled differently from the others (filled or
+  accented against plain), placed where the task ends. A destructive action is never
+  the primary one; set it apart and confirm it.
+- **Reading order is task order.** Start top left, end at the primary action; related
+  controls sit together under a heading. The Tab order is the reading order, and the
+  first focus is on the first field to fill in, or on the primary action when there is
+  nothing to fill in.
+- **Hierarchy has few levels** (title, section heading, body, hint), made with size,
+  weight, color, and space. Everything of the same level looks the same.
+- **State is visible**: enabled and disabled, selected, focused, busy, empty, and
+  error each look different, and an error sits next to its cause and says what to do.
+  A state is never shown by color alone.
+- **Say what comes next**: an empty list says how to fill it, a disabled primary
+  action says what is missing (a hint beside it), and after an action its result is
+  visible on the screen.
 
 ## Color
 
