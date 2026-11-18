@@ -67,6 +67,15 @@ rule comes from, cite the source from [sources.md](sources.md).
 - UX-L6 The layout works at the smallest supported window size; the right areas grow;
   a minimum window size prevents breaking. *(should)*
 - UX-L7 Dialog buttons follow the platform order and are verbs. *(should)*
+- UX-L8 The same kind of element has the same margin and padding on every screen
+  (window margin, label to field, field to field, group to group, button padding,
+  dialog button row); the screen matches a similar neighbor. *(should)*
+- UX-L9 Every margin and padding is a value of the program's spacing scale, taken from
+  its style or resource, not a one-off number. *(should)*
+- UX-L10 Visual guidance: the primary action is set apart, the reading order and the
+  Tab order follow the task, the first focus is right, each state is visible, and the
+  user is told the next step (empty and disabled states explain themselves).
+  *(should)*
 
 ## UX-I: Forms and input
 

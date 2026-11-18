@@ -59,8 +59,10 @@ record exceptions: [references/direction.md](references/direction.md).
    read-only, and no permission are designed, not left to chance.
 4. **One primary action per screen or area.** Visual weight follows importance; the
    primary action is easy to find, a destructive one is hard to hit by accident.
-5. **Same thing, same name, same place.** Follow the platform's conventions and the
-   application's own; a term means one thing everywhere.
+5. **Same thing, same name, same place, same spacing.** Follow the platform's
+   conventions and the application's own; a term means one thing everywhere, and the
+   same kind of element has the same margin and padding on every screen, from one
+   spacing scale.
 6. **Prevent errors before reporting them.** Constrain input, offer defaults, and make
    messages say what happened and what to do next.
 7. **Answer every action.** Visible feedback within 0.1 s, a busy state after 1 s, and
