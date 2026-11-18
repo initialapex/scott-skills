@@ -32,6 +32,12 @@
       "source": "./plugins/ss-design"
     },
     {
+      "name": "ss-build",
+      "description": "Build and release helpers for Windows projects: a version generator that takes the version from git tags (C# and C++ with MSBuild), and a release package script that zips the release build, with the requests or edits that set them up in a project",
+      "category": "development",
+      "source": "./plugins/ss-build"
+    },
+    {
       "name": "taste-skill",
       "description": "Art direction, reference images and a browser check for professional company websites instead of generic AI pages (leonxlnx/taste-skill, MIT)",
       "category": "development",
