@@ -1,7 +1,7 @@
 {
   "name": "ss-design",
   "displayName": "SS Design",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Technology-independent design principles (the object-oriented design examples are in C# 7.3): object-oriented design (responsibilities, SOLID, patterns, domain model, refactoring) and UI/UX design (easy to use or easy to learn, flows, layout, forms, accessibility), with review checklists",
   "author": {
     "name": "Scott Chang"
