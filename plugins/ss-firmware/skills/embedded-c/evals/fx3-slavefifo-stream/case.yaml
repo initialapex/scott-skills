@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: fx3-slavefifo-stream
+expected_outcome: |
+  An application thread driven by event flags; USB callbacks only decode and signal; a stream object with idempotent start and stop that tears down on reset, disconnect and set-configuration; an AUTO DMA channel from the GPIF socket to the USB consumer socket with 32-byte aligned buffers; a vendor request command table with direction and length checks; counters readable through a vendor request.
