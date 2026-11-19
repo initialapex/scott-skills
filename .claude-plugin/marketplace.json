@@ -6,7 +6,7 @@
     "name": "Scott Chang"
   },
   "metadata": {
-    "version": "0.4.0"
+    "version": "0.5.0"
   },
   "plugins": [
     {
@@ -36,6 +36,12 @@
       "description": "Build and release helpers for Windows projects: a version generator that takes the version from git tags (C# and C++ with MSBuild), and a release package script that zips the release build, with the requests or edits that set them up in a project",
       "category": "development",
       "source": "./plugins/ss-build"
+    },
+    {
+      "name": "ss-firmware",
+      "description": "Firmware skills in C: a layered, function-based architecture with struct and function pointer objects (OOD in C) for ESP32 (ESP-IDF), STM32 (HAL), Nordic (nRF Connect SDK), NXP (MCUXpresso SDK), and FX2/FX3 USB controllers, with host-side unit tests and a review checklist",
+      "category": "development",
+      "source": "./plugins/ss-firmware"
     },
     {
       "name": "taste-skill",

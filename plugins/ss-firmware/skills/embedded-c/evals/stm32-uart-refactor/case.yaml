@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: stm32-uart-refactor
+expected_outcome: |
+  Finds the unshifted I2C address, the unbounded line buffer, the ISR/main data race, and the %f printf; proposes a ring buffer from the ISR, a command table module free of HAL headers, ports that override the weak HAL callbacks, and a minimal USER CODE footprint.
+context:
+  scaffold_script: place-files.sh

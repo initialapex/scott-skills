@@ -1,0 +1,11 @@
+{
+  "name": "ss-firmware",
+  "displayName": "SS Firmware",
+  "version": "0.1.0",
+  "description": "Firmware skills in C: a layered, function-based architecture with struct and function pointer objects (OOD in C) for ESP32 (ESP-IDF), STM32 (HAL), Nordic (nRF Connect SDK), NXP (MCUXpresso SDK), and Cypress/Infineon FX2LP and FX3 USB controllers, with host-side unit tests",
+  "author": {
+    "name": "Scott Chang"
+  },
+  "license": "MIT",
+  "keywords": ["firmware", "embedded", "c", "mcu", "esp32", "esp-idf", "stm32", "nordic", "nrf", "zephyr", "nxp", "mcuxpresso", "fx2", "fx3", "usb", "hal", "rtos"]
+}

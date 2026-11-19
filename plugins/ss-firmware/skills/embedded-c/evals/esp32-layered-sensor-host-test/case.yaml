@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: esp32-layered-sensor-host-test
+expected_outcome: |
+  A layered design: an I2C interface (struct + const ops table) injected into an SHT31 driver, a service that reports upward through a callback with a context pointer, ESP-IDF calls only in a port component, a host unit test with a mock bus, and one composition root.

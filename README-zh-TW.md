@@ -15,6 +15,7 @@ Scott Chang 的 Claude Code plugin marketplace。
 | `document-skills`、`cc-skills`、`llm-api`、`academy-guide`、`discernment-nudge` | [anthropics/skills](https://github.com/anthropics/skills)（第三方，Apache-2.0） | Anthropic skills repository 的 plugin：Office 與 PDF 文件；skill-creator、frontend-design 等實用 skill；Claude API 參考；以及其他。有兩個 plugin 與上游不同名：`llm-api` 在上游叫 `claude-api`（第三方 marketplace 不能使用 `claude-` 前綴），`cc-skills` 在上游叫 `example-skills`（這個名字看起來像範例） |
 | `ss-design` | [plugins/ss-design](plugins/ss-design) | 與技術無關的設計。`ss-design:ood`：物件導向設計（責任分配、SOLID、設計模式、領域模型、code smell 與重構、錯誤處理），附 Mermaid 圖與 review checklist；範例為 C# 7.3。`ss-design:ui-ux`：UI/UX 設計，先決定 Easy to use 或 Easy to learn（資訊架構與流程、版面、表單／表格與回饋、鍵盤與無障礙、多語系、現場操作畫面），附 Mermaid 流程圖、ASCII 線框圖與 review checklist |
 | `ss-build` | [plugins/ss-build](plugins/ss-build) | Windows 專案的 build 與 release 輔助（C# 與 C++ 搭配 MSBuild、Windows PowerShell）。`ss-build:git-version`：版號來自 git tag，附產生器（把版號寫進被忽略的檔案）以及把專案轉換過去的步驟。`ss-build:release-package`：一個 script 打包 release build，每個平台一個 zip |
+| `ss-firmware` | [plugins/ss-firmware](plugins/ss-firmware) | MCU 韌體（C 語言）。`ss-firmware:embedded-c`：分層式、function base 架構（app、service、driver、HAL、port、OSAL），用 struct 加 const function pointer 表建立類似 OOD 的物件，含相依注入、ISR 到 task 的設計、靜態記憶體、status code，以及搭配 mock 的 host 端單元測試（附可編譯的範本）。附 ESP32（ESP-IDF）、STM32（CubeMX/HAL）、Nordic（nRF Connect SDK）、NXP（MCUXpresso SDK）、FX2LP（8051）/ FX3 USB 控制器的平台指南，以及通用 USB 裝置韌體指南與 review checklist |
 
 這個 marketplace 的 plugin 一律加上 `ss-` 前綴，讓 skill 的完整名稱 `<plugin>:<skill>` 不會跟其他 marketplace 的 plugin 重複。
 
@@ -28,6 +29,7 @@ Scott Chang 的 Claude Code plugin marketplace。
 /plugin install ss-wpf@scott-skills
 /plugin install ss-design@scott-skills
 /plugin install ss-build@scott-skills
+/plugin install ss-firmware@scott-skills
 /plugin install taste-skill@scott-skills
 /plugin install ui-skills@scott-skills
 /plugin install document-skills@scott-skills
@@ -47,6 +49,7 @@ Scott Chang 的 Claude Code plugin marketplace。
 /plugin install ss-wpf@scott-skills
 /plugin install ss-design@scott-skills
 /plugin install ss-build@scott-skills
+/plugin install ss-firmware@scott-skills
 /plugin install taste-skill@scott-skills
 /plugin install ui-skills@scott-skills
 /plugin install document-skills@scott-skills
