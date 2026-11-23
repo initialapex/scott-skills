@@ -4,3 +4,6 @@ obj/
 
 # Release packages made by tools/ReleasePack
 artifacts/
+
+# Local eval runs (claude plugin eval); large and machine specific
+**/evals/results/
