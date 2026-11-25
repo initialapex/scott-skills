@@ -114,7 +114,12 @@ relative path (`./plugins/<plugin>`).
    dotnet run --project tools/ReleasePack -- upload --version X.Y.Z
    ```
 
-   `--dry-run` prints the gh commands; `--clobber` replaces the assets and notes of
-   an existing release.
+   The tool creates a draft release, uploads each file (a failed upload is retried
+   up to three times), checks on GitHub that every file is complete, and then
+   publishes the release as Latest. GitHub sometimes answers with a 5xx error. When a
+   run still fails, the draft stays unpublished: run the same command again to
+   resume it, and files that are complete are skipped. `--dry-run` prints the gh
+   commands; `--clobber` replaces the assets and notes of a release that is already
+   published.
 
 The tool lives outside `plugins/`, so it is never installed with a plugin.

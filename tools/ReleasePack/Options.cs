@@ -14,14 +14,16 @@ internal sealed partial class Options
 
         Commands:
           pack     Build the zips, SHA256SUMS.txt, and a notes.md draft from the tag vX.Y.Z.
-          upload   Upload the packed files to the GitHub Release vX.Y.Z with gh.
+          upload   Upload the packed files to the GitHub Release vX.Y.Z with gh: create a draft, upload each file
+                   (a failed one is retried), check every file on GitHub, then publish. When a run fails, the draft
+                   stays: run the same command again to resume it (complete files are skipped).
 
         Options:
           --version X.Y.Z               Collection version; the tag vX.Y.Z must exist.
           --plugin-ref <plugin>=<tag>   Tag to bundle for a URL-sourced plugin instead of its latest release tag.
           --out <dir>                   Output folder (default: artifacts/release-vX.Y.Z in the repository).
           --force                       pack: replace the files of an earlier pack in the output folder.
-          --clobber                     upload: update an existing release (replace assets and notes).
+          --clobber                     upload: update a release that is already published (replace assets and notes).
           --dry-run                     upload: print the gh commands without running them.
         """;
 
