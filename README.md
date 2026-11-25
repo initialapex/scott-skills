@@ -13,6 +13,7 @@ Scott Chang's Claude Code plugin marketplace.
 | `taste-skill` | [leonxlnx/taste-skill](https://github.com/leonxlnx/taste-skill) (third party, MIT) | Art direction, reference images, and a browser check for professional company websites. `taste-skill:taste-skill` |
 | `ui-skills` | [ibelick/ui-skills](https://github.com/ibelick/ui-skills) (third party, MIT) | Skills for design engineers: UI cleanup and accessibility, metadata, and motion performance fixes. `ui-skills:baseline-ui`, `ui-skills:fixing-accessibility`, and more |
 | `document-skills`, `cc-skills`, `llm-api`, `academy-guide`, `discernment-nudge` | [anthropics/skills](https://github.com/anthropics/skills) (third party, Apache-2.0) | The plugins of Anthropic's skills repository: Office and PDF documents; skill-creator, frontend-design, and other practical skills; Claude API reference; and more. Two plugins are renamed from upstream: `llm-api` is `claude-api` (third-party marketplaces cannot use the `claude-` prefix), and `cc-skills` is `example-skills` (the name reads like a sample) |
+| `clangd-lsp`, `csharp-lsp`, `gopls-lsp`, `jdtls-lsp`, `kotlin-lsp`, `lua-lsp`, `php-lsp`, `pyright-lsp`, `ruby-lsp`, `rust-analyzer-lsp`, `swift-lsp`, `typescript-lsp` | [plugins of anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official/tree/main/plugins) (third party, Apache-2.0, copied unchanged) | Anthropic's official language server (LSP) plugins for C/C++, C#, Go, Java, Kotlin, Lua, PHP, Python, Ruby, Rust, Swift, and TypeScript/JavaScript. Each plugin only configures Claude Code to start a server; **the language server itself must be installed on the machine** (see each plugin's README), also on an offline machine |
 | `ss-design` | [plugins/ss-design](plugins/ss-design) | Technology-independent design. `ss-design:ood`: object-oriented design (responsibilities, SOLID, design patterns, domain model, code smells and refactoring, error handling) with Mermaid diagrams and a review checklist; C# 7.3 examples. `ss-design:ui-ux`: UI and UX design that first decides between easy to use and easy to learn (information architecture and flows, layout, forms, tables and feedback, keyboard and accessibility, localization, field operation screens) with Mermaid flows, ASCII wireframes, and a review checklist |
 | `ss-build` | [plugins/ss-build](plugins/ss-build) | Build and release helpers for Windows projects (C# and C++ with MSBuild, Windows PowerShell). `ss-build:git-version`: the version comes from git tags, with a generator that writes it into ignored files and the conversion of a project to it. `ss-build:release-package`: one script that zips the release build, one zip per platform |
 | `ss-firmware` | [plugins/ss-firmware](plugins/ss-firmware) | Firmware in C for MCUs. `ss-firmware:embedded-c`: a layered, function-based architecture (app, service, driver, HAL, port, OSAL) with objects built from structs and const function-pointer tables, dependency injection, ISR-to-task design, static memory, status codes, and host-side unit tests with mocks (compiling templates included). Platform guides for ESP32 (ESP-IDF), STM32 (CubeMX/HAL), Nordic (nRF Connect SDK), NXP (MCUXpresso SDK), and FX2LP (8051) / FX3 USB controllers, plus a generic USB device firmware guide and a review checklist |
@@ -33,6 +34,7 @@ Run inside a Claude Code session:
 /plugin install ss-firmware@scott-skills
 /plugin install taste-skill@scott-skills
 /plugin install ui-skills@scott-skills
+/plugin install pyright-lsp@scott-skills   # and the other *-lsp plugins
 /plugin install document-skills@scott-skills
 /plugin install cc-skills@scott-skills
 ```
@@ -43,7 +45,8 @@ The third-party plugins are listed by GitHub repository and follow its default b
 
 Each [GitHub Release](https://github.com/initialapex/scott-skills/releases) has a
 `scott-skills-vX.Y.Z.zip` that holds the whole marketplace, with `ss-workflow` and the
-third-party plugins (`taste-skill`, `ui-skills`, `anthropics/skills`) bundled.
+third-party plugins (`taste-skill`, `ui-skills`, `anthropics/skills`) bundled. The twelve
+LSP plugins of `claude-plugins-official` live in `plugins/` and are always in the zip.
 Extract it and add the extracted folder as a local marketplace:
 
 ```
@@ -55,6 +58,7 @@ Extract it and add the extracted folder as a local marketplace:
 /plugin install ss-firmware@scott-skills
 /plugin install taste-skill@scott-skills
 /plugin install ui-skills@scott-skills
+/plugin install pyright-lsp@scott-skills   # and the other *-lsp plugins
 /plugin install document-skills@scott-skills
 /plugin install cc-skills@scott-skills
 ```
@@ -71,7 +75,7 @@ tests/                            checks of the ss-build scripts (bash tests/git
 Plugins with their own release cycle (like `ss-workflow`) and third-party plugins stay
 in their own repository and are listed here by GitHub repository or URL. Third-party
 plugins keep their upstream names (except where a name is reserved) and are not
-modified; the bundle keeps their license files. Plugins that live here are listed with a
+modified; the bundle keeps their license files. Plugins that live here (including the unchanged LSP plugin copies) are listed with a
 relative path (`./plugins/<plugin>`).
 
 ## Versioning
